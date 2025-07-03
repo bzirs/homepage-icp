@@ -1,8 +1,8 @@
-FROM caddy:alpine
+FROM nginx:alpine
 
-WORKDIR /var/www/html
-
-COPY . .
+COPY dist /usr/share/nginx/html
+COPY dist/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
-EXPOSE 443
+
+CMD ["nginx", "-g", "daemon off;"]
