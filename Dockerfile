@@ -1,8 +1,9 @@
 # 如果需要构建阶段（使用gulp）
-FROM node:16 AS build
+FROM node:latest AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm i -g pnpm
+ENV SHELL=/bin/sh
 COPY . .
 RUN pnpm i
 RUN pnpm build
