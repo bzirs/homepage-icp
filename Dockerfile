@@ -1,8 +1,16 @@
-FROM nginx:alpine
+# 如果需要构建阶段（使用gulp）
+FROM node:16 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm i -g pnpm
+COPY . .
+RUN pnpm i
+RUN pnpm build
 
-COPY dist /usr/share/nginx/html
-COPY dist/nginx.conf /etc/nginx/conf.d/default.conf
-
+# Caddy生产阶段
+FROM caddy:alpine
+WORKDIR /var/www/html
+COPY --from=build /app/dist .
+COPY Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 443
