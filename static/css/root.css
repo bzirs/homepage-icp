@@ -41,7 +41,7 @@
 /*卡片模糊背景＋黑色透明卡片+白色svg**/
 html {
   --name: theme;
-  --main_bg_color: url(../img/background.jpg);
+  --main_bg_color: url(https://cdn.jsdelivr.net/gh/ELSTHub/PublicServiceCDN@main/blog/pictureBed//83066660_p0.png);
   --main_text_color: #eeeeee;
   --gradient: linear-gradient(120deg, #bd34fe, #e0321b 30%, #41d1ff 60%);
   --purple_text_color: #747bff;
